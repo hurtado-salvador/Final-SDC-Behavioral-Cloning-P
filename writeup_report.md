@@ -12,7 +12,7 @@ Summarize the results with a written report
 
 [image1]: ./images/3cams_1.jpg "Cameras"
 [image2]: ./images/angulos_1.png "Angles"
-[image3]: ./images/cams.jpg "Cameras view"
+[image3]: ./images/cams.png "Cameras view"
 [image4]: ./images/hist_orig.jpg "Histogram Xbox controller"
 [image5]: ./images/histograma_2.jpg "Histograma training data"
 [image6]: ./images/nvidia1.png "Nvidia Architecture"
@@ -40,26 +40,27 @@ to explain how the code works.
 Base on the information of the NVIDIA End To End Deep Learning for Self-Driving Cars.
   https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/
 The model is as follows.
-| Layer Type	 |     Keras Layer |
-| ---------------- | --------------- |
-| Normalization	    | model.add(Lambda(lambda x: x/255 -0.5, input_shape=(64,64,3))) |
-| Cropping	        | model.add(Cropping2D(cropping=((10,0),(0,0)))) |
+
+| Layer Type	      |     Keras Layer                                                                          |
+| ----------------  | ---------------                                                                          |
+| Normalization	    | model.add(Lambda(lambda x: x/255 -0.5, input_shape=(64,64,3)))                           |
+| Cropping	        | model.add(Cropping2D(cropping=((10,0),(0,0))))                                           |
 | Convolution	      | model.add(Convolution2D(24,5,5, activation='relu', subsample=(2,2), border_mode='same')) |
-| Convolution	      | model.add(Convolution2D(36,5,5,activation='relu', subsample=(2,2), border_mode='same')) |
-| Convolution	      | model.add(Convolution2D(48,5,5,activation='relu',subsample=(2,2), border_mode='same')) |
-| Convolution	      | model.add(Convolution2D(64,3,3,activation='relu')) |
-| Dropout	          | model.add(Dropout(0.5)) |
-| Convolution	      | model.add(Convolution2D(64,3,3,activation='relu')) |
-| Flatten	          | model.add(Flatten()) |
-| Fully connected	  | model.add(Dense(1164)) |
-|	                | model.add(ELU()) |
-| Fully connected	  | model.add(Dense(100)) |
-|	                | model.add(ELU()) |
-| Fully connected	  | model.add(Dense(50)) |
-|	                | model.add(ELU()) |
-| Fully connected	  | model.add(Dense(10)) |
-|	                | model.add(ELU()) |
-| Fully connected	  | model.add(Dense(1)) |
+| Convolution	      | model.add(Convolution2D(36,5,5,activation='relu', subsample=(2,2), border_mode='same'))  |
+| Convolution	      | model.add(Convolution2D(48,5,5,activation='relu',subsample=(2,2), border_mode='same'))   |
+| Convolution	      | model.add(Convolution2D(64,3,3,activation='relu'))                                       |
+| Dropout	          | model.add(Dropout(0.5))                                                                  |
+| Convolution	      | model.add(Convolution2D(64,3,3,activation='relu'))                                       |
+| Flatten	          | model.add(Flatten())                                                                     |
+| Fully connected	  | model.add(Dense(1164))                                                                   |
+|	                  | model.add(ELU())                                                                         |
+| Fully connected	  | model.add(Dense(100))                                                                    |
+|	                  | model.add(ELU())                                                                         |
+| Fully connected	  | model.add(Dense(50))                                                                     |
+|	                  | model.add(ELU())                                                                         |
+| Fully connected	  | model.add(Dense(10))                                                                     |
+|	                  | model.add(ELU())                                                                         |
+| Fully connected	  | model.add(Dense(1))                                                                      |
 
 #### 5.- Has an attempt been made to reduce overfitting of the model?
 Dropout layer was added after the 4th Convolution Layer with a drop rate of 50%
