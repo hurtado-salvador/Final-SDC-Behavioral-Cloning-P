@@ -126,7 +126,7 @@ left_angle_grad = degrees(atan(oposite_left / forward_distance))
 
 ![alt text][image3]
 <p align="center">
-  <img /![alt text][image2]>
+  <img ![alt text][image2]/>
 </p>
 
 
@@ -150,7 +150,7 @@ The model architecture evolve from LetNet, to Nvidia, I use different parameters
 
 
 <p align="center">
-  <img /![alt text][image6]>
+  <img ![alt text][image6]/>
 </p>
 
 #### 10.- Is the creation of the training dataset and training process documented?
