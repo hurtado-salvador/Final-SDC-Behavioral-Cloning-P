@@ -125,9 +125,7 @@ left_angle_grad = degrees(atan(oposite_left / forward_distance))
 
 
 ![alt text][image3]
-<p align="center">
-  <img ![alt text][image2]/>
-</p>
+![alt text][image2]
 
 
 
@@ -149,9 +147,7 @@ The model architecture evolve from LetNet, to Nvidia, I use different parameters
 
 
 
-<p align="center">
-  <img ![alt text][image6]/>
-</p>
+![alt text][image6]
 
 #### 10.- Is the creation of the training dataset and training process documented?
 The training data set was generated using a mouse to control the steering, and then adding specific track areas modifying the CSV file.
