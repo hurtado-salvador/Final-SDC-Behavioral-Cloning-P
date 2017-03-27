@@ -76,9 +76,12 @@ In this matters, originally the training data was generated using a Xbox control
 
 
 The values of the angles were plotted on histogram for comparation, based on that 2 strategies were implemented.
-a) For the training 3 times the samples with steeering angle above +/-0.20 (+/- 5°) was added to the training set, and 21 times the samples with steering angle above +/-0.35 (+/-8.75°).
-function name "def augment_images(image_name, angles_val):"
+a) For the training 3 times the samples with steeering angle above +/-0.20 (+/- 5°) was added to the training set, and 21 times the samples with steering angle above +/-0.35 (+/-8.75°). Row 71 model.py
 
+```python
+def augment_images(image_name, angles_val):
+
+```
 
 b) The use of the left and right images, with a variable angle correction strategy.
 In the Step by Step solution video by David Silver https://www.youtube.com/watch?v=rpxZ87YFg0M&index=3&list=PLAwxTw4SYaPkz3HerxrHlu1Seq8ZA7-5P&t=6s.
@@ -93,12 +96,33 @@ Assumptions:
 *Right camera is at 0.826mts from the center in the same plane.
 This information was shared by @anguyen in slack channel.
 
--Function "def correction_factor(x, sp):"  using as paramters the angle of the center camera and the speed calculates and retuns  the correction factor for left image and right image.
+Using as paramters the angle of the center camera and the speed calculates and retuns  the correction factor for left image and right image. Row 37 model.py
+```python
+def correction_factor(x, sp):
+    center_camera_angle = (x*25)
+    speed = sp
+    center_camera_angle_rad = radians(center_camera_angle)
+    left_camera_distance = 0.805  # in meters
+    right_camera_distance = 0.826  # in meters
+    forward_distance = ((speed * 1.60934) * 1000) / 3600  # speed in MPH converted to meters per second
+    oposite_center = tan(center_camera_angle_rad) * forward_distance
+    oposite_right = oposite_center - right_camera_distance
+    oposite_left = oposite_center + left_camera_distance
+    right_angle_grad = degrees(atan(oposite_right / forward_distance))
+    left_angle_grad = degrees(atan(oposite_left / forward_distance))
+    return right_angle_grad/25, left_angle_grad/25
+
+```
+
 -The computation consider a triangle formed by the forward vector calculated as the distance traveled in 1 second of the giving speed, this is consider as the adjacent side of the triangle.
 -The distance from the center of the camera to the left and right camera are considered as the oposite side of the traingle. and variate considering the center vector angle.
 #Then the formula to calculate the angle for correction left and righ side is as follows.
 Left andgle in degrees is the inverse tangent of divide the oposite side to the forward distance.
-"left_angle_grad = degrees(atan(oposite_left / forward_distance))"
+```python
+left_angle_grad = degrees(atan(oposite_left / forward_distance))
+
+```
+
 
 ![alt text][image3]
 ![alt text][image2]
