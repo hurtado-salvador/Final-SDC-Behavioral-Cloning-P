@@ -125,7 +125,11 @@ left_angle_grad = degrees(atan(oposite_left / forward_distance))
 
 
 ![alt text][image3]
-![alt text][image2]
+<p align="center">
+  <img /![alt text][image2]>
+</p>
+
+
 
 
 ### Architecture and Training Documentation:
@@ -144,7 +148,10 @@ Pictures were added with specific areas of the track, the curves after the bridg
 The model architecture evolve from LetNet, to Nvidia, I use different parameters to test like using 3x3 convolution instead of the nvidia 5x5 convolution, since there were some issues I opt to stick to the Nvidia architecture and focus my test on the angles for left and right camera and images size, and sample size.  
 
 
-![alt text][image6]
+
+<p align="center">
+  <img /![alt text][image6]>
+</p>
 
 #### 10.- Is the creation of the training dataset and training process documented?
 The training data set was generated using a mouse to control the steering, and then adding specific track areas modifying the CSV file.
